@@ -1,0 +1,56 @@
+PROTO overhead-cam [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 0 1 0
+  field SFFloat    bodyMass     1
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    children [
+      SolidBox{
+        size 0.2 0.2 0.2
+      }
+      Camera {
+        translation            0.8 0 0
+        fieldOfView            0.7854   # [0, pi]
+        width                  64       # [0, inf)
+        height                 64       # [0, inf)
+        # projection             "planar" # {"planar", "spherical", "cylindrical"}
+        near                   0.01     # [0, inf)
+        far                    0.0      # [0, inf)
+        exposure               1.0      # [near, inf)
+        antiAliasing           FALSE    # {TRUE, FALSE}
+        ambientOcclusionRadius 0        # [0, inf)
+        bloomThreshold         -1.0     # [-1, inf)
+        motionBlur             0.0      # [0, inf)
+        noise                  0.0      # [0, 1]
+        noiseMaskUrl           ""       # any string
+        lens                   NULL     # {Lens, PROTO}
+        focus                  NULL     # {Focus, PROTO}
+        zoom                   NULL     # {Zoom, PROTO}
+        recognition            NULL     # {Recognition, PROTO}
+        lensFlare              NULL     # {LensFlare, PROTO}
+      }
+    ]
+    boundingObject Group {
+    children [
+      Transform {
+        translation 0 0 0
+        children [
+          Box {
+            size 0.8 0.8 0.8
+          }
+        ]
+      }
+    ]
+  }
+    physics Physics {
+      density -1
+      mass IS bodyMass
+      centerOfMass [0 0.015 0]
+      inertiaMatrix [8.74869e-05 9.78585e-05 8.64333e-05, 0 0 0]
+    }
+    controller "vision_controller"
+  }
+}

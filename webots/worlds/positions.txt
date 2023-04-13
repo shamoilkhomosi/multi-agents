@@ -1,0 +1,200 @@
+E-puck {
+  translation 0.1 0 0.17444929611738472
+  name "e-puck-1-1-lb"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 101
+  receiver_channel 101
+}
+E-puck {
+  translation 0.2 0 0.27517889296845677
+  name "e-puck-1-2"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 102
+  receiver_channel 102
+}
+E-puck {
+  translation 0.3 0 0.012254875369368904
+  name "e-puck-1"
+  controller "leader_controller"
+  version "2"
+  emitter_channel 1
+  receiver_channel 1
+}
+E-puck {
+  translation 0.4 0 0.21972819058009455
+  name "e-puck-1-4"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 104
+  receiver_channel 104
+}
+E-puck {
+  translation 0.5 0 0.33295716278759785
+  name "e-puck-1-5"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 105
+  receiver_channel 105
+}
+E-puck {
+  translation 0.6 0 0.3077303268737549
+  name "e-puck-2-1"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 201
+  receiver_channel 201
+}
+E-puck {
+  translation 0.7 0 0.133420799556346
+  name "e-puck-2-2"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 202
+  receiver_channel 202
+}
+E-puck {
+  translation 0.8 0 0.3078070596922911
+  name "e-puck-2"
+  controller "leader_controller"
+  version "2"
+  emitter_channel 2
+  receiver_channel 2
+}
+E-puck {
+  translation 0.9 0 0.31336814584956413
+  name "e-puck-2-4"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 204
+  receiver_channel 204
+}
+E-puck {
+  translation 1.0 0 0.13580541711948357
+  name "e-puck-2-5"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 205
+  receiver_channel 205
+}
+E-puck {
+  translation 1.1 0 0.050280890459009596
+  name "e-puck-3-1"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 301
+  receiver_channel 301
+}
+E-puck {
+  translation 1.2 0 0.20349727140750443
+  name "e-puck-3-2"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 302
+  receiver_channel 302
+}
+E-puck {
+  translation 1.3 0 0.30259110210074014
+  name "e-puck-3"
+  controller "leader_controller"
+  version "2"
+  emitter_channel 3
+  receiver_channel 3
+}
+E-puck {
+  translation 1.4 0 0.021830745079754726
+  name "e-puck-3-4"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 304
+  receiver_channel 304
+}
+E-puck {
+  translation 1.5 0 0.10681655904102579
+  name "e-puck-3-5"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 305
+  receiver_channel 305
+}
+E-puck {
+  translation 1.6 0 0.331576830576051
+  name "e-puck-4-1"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 401
+  receiver_channel 401
+}
+E-puck {
+  translation 1.7 0 0.15276076126546642
+  name "e-puck-4-2"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 402
+  receiver_channel 402
+}
+E-puck {
+  translation 1.8 0 0.1809997942819386
+  name "e-puck-4"
+  controller "leader_controller"
+  version "2"
+  emitter_channel 4
+  receiver_channel 4
+}
+E-puck {
+  translation 1.9 0 0.09069868103862581
+  name "e-puck-4-4"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 404
+  receiver_channel 404
+}
+E-puck {
+  translation 2.0 0 0.1471756215084246
+  name "e-puck-4-5"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 405
+  receiver_channel 405
+}
+E-puck {
+  translation 2.1 0 0.053617918326138346
+  name "e-puck-5-1"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 501
+  receiver_channel 501
+}
+E-puck {
+  translation 2.2 0 0.1750497560269169
+  name "e-puck-5-2"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 502
+  receiver_channel 502
+}
+E-puck {
+  translation 2.3 0 0.00289210043782732
+  name "e-puck-5"
+  controller "leader_controller"
+  version "2"
+  emitter_channel 5
+  receiver_channel 5
+}
+E-puck {
+  translation 2.4 0 0.11319009337926962
+  name "e-puck-5-4"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 504
+  receiver_channel 504
+}
+E-puck {
+  translation 2.5 0 0.32830842858139914
+  name "e-puck-5-5-rb"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 505
+  receiver_channel 505
+}

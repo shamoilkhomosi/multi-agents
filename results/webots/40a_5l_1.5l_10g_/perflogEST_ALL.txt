@@ -1,0 +1,9 @@
+World: /Users/shamoilkhomosi/Desktop/Sheffield/FYP/simulation/webots/worlds/e-puck2.wbt
+World metrics: 2566 solids, 80 joints, 2925 graphical geometries
+Threads count: 1
+Shadows disabled: false
+Anti-aliasing disabled: false
+<mode> <stepsCount> <prePhysics(ms)> <physics(ms)> <postPhysics(ms)> <mainRendering(ms)> <virtualRealityHeadsetRendering(ms)> <gpuMemoryTransfer(ms)> <trianglesCount> <mainFPS> <controller:follower_controller(ms)> <controller:leader_controller(ms)>
+AVG            2930            2.027        38.509             4.205               0.000                                0.000                   0.010              nan     0.000                                5.795                              7.263 
+TOT            2930         5939.105    112830.854         12320.620               0.000                                0.000                   0.413            0.000     0.000                             8687.416                          10670.710 
+

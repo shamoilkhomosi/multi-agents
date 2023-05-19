@@ -113,13 +113,13 @@ for i=1:Na
 %     same but with consensus protocol added
     for j = i_global
         if j == 1
-            dzdt(1) = v*(z(j+1) - z(j))/h  + a*z(j) - k*(z_soh(j)) + kr*r(j);
-        elseif j == i_global(end)
-            dzdt(j) = v*(-z(j-1) + z(j))/h + a*z(j) - k*(z(j)) + kr*r(j) ;
+            dzdt(1) = v*(z(j+1) - z(j))/h  + a*z(j) - k*(z_soh(j)) + kr*r(j)- v*(r(j+1) - r(j))/h;
+        elseif j == Nh
+            dzdt(j) = v*(-z(j-1) + z(j))/h + a*z(j) - k*(z(j)) + kr*r(j) - v*(-r(j-1) + r(j))/h;
         elseif j == x_lead
-            dzdt(j) = v*(z(j+1) - 2*z(j) + z(j-1))/h^2 + a*z_lead - k*(z_lead) + kr*r(j);
+            dzdt(j) = v*(z(j+1) - 2*z(j) + z(j-1))/h^2 + a*z_lead - k*(z_lead) + kr*r(j)  - v*(r(j+1) - 2*r(j) + r(j-1))/h^2;
         else
-            dzdt(j) = v*(z(j+1) - 2*z(j) + z(j-1))/h^2 + a*z(j) - k*(z_soh(j)) + kr*r(j);
+            dzdt(j) = v*(z(j+1) - 2*z(j) + z(j-1))/h^2 + a*z(j) - k*(z_soh(j)) + kr*r(j)  - v*(r(j+1) - 2*r(j) + r(j-1))/h^2;
         end
     end
 end

@@ -6,10 +6,17 @@ WorldInfo {
   title "e-puck simulation"
   basicTimeStep 32
   coordinateSystem "NUE"
+  contactProperties [    ContactProperties {
+      coulombFriction [
+        0.9
+      ]
+      rollingFriction 0.65 0.65 0.65
+    }
+  ]
 }
 Viewpoint {
- orientation -0.6865026159817225 -0.576166122214707 -0.4435614476736215 1.7060960045853748
-  position 0.39662828138041073 9.016174628492001 1.091714176780529
+ orientation -0.771530439165453 -0.5608861161017472 -0.30024580963847025 1.243726186873522
+  position -0.43858165831619056 4.97982469409408 2.4622756868701403
 }
 TexturedBackground {
 }
@@ -21,7 +28,7 @@ RectangleArena {
   }
 }
 E-puck {
-  translation 0.0 0 0.0
+  translation 0.0 0 0
   name "e-puck-1-1-lb"
   controller "follower_controller"
   version "2"
@@ -35,7 +42,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 0.0 -0.04 0
+  translation 0.0 -0.04 -0.0
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -44,7 +51,7 @@ SolidBox {
   }
 }
 E-puck {
-  translation 0.1 0 0.21090719438644737
+  translation 0.1 0 0
   name "e-puck-1-2"
   controller "follower_controller"
   version "2"
@@ -58,7 +65,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 0.1 -0.04 0
+  translation 0.1 -0.04 -0.25649152772034317
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -67,7 +74,7 @@ SolidBox {
   }
 }
 E-puck {
-  translation 0.2 0 0.41835426842177226
+  translation 0.2 0 0
   name "e-puck-1-3"
   controller "follower_controller"
   version "2"
@@ -81,7 +88,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 0.2 -0.04 0
+  translation 0.2 -0.04 -0.5063487333087199
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -90,214 +97,7 @@ SolidBox {
   }
 }
 E-puck {
-  translation 0.3 0 0.6189378681106853
-  name "e-puck-1-4"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 104
-  receiver_channel 104
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 0.3 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 0.4 0 0.8093672408669408
-  name "e-puck-1-5"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 105
-  receiver_channel 105
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 0.4 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 0.5 0 0.9865182232401537
-  name "e-puck-1-6"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 106
-  receiver_channel 106
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 0.5 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 0.6 0 1.1474844955994834
-  name "e-puck-1-7"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 107
-  receiver_channel 107
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 0.6 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 0.7 0 1.2896252628954525
-  name "e-puck-1-8"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 108
-  receiver_channel 108
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 0.7 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 0.8 0 1.4106085792545426
-  name "e-puck-1-9"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 109
-  receiver_channel 109
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 0.8 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 0.9 0 1.508449605628004
-  name "e-puck-1-10"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 110
-  receiver_channel 110
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 0.9 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 1.0 0 1.5815431728440863
-  name "e-puck-1-11"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 111
-  receiver_channel 111
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 1.0 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 1.1 0 1.628690115837813
-  name "e-puck-1-12"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 112
-  receiver_channel 112
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 1.1 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 1.2 0 1.6491169470218094
+  translation 0.3 0 0
   name "e-puck-1"
   controller "leader_controller"
   version "2"
@@ -311,7 +111,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 1.2 -0.04 0
+  translation 0.3 -0.04 -0.7431088957403889
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -320,12 +120,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 1.3 0 1.642488546039019
-  name "e-puck-1-14"
+  translation 0.4 0 0
+  name "e-puck-1-5"
   controller "follower_controller"
   version "2"
-  emitter_channel 114
-  receiver_channel 114
+  emitter_channel 105
+  receiver_channel 105
   turretSlot [
     GPS {
     }
@@ -334,7 +134,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 1.3 -0.04 0
+  translation 0.4 -0.04 -0.9606480576295104
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -343,12 +143,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 1.4 0 1.6089136577106067
-  name "e-puck-1-15"
+  translation 0.5 0 0
+  name "e-puck-1-6"
   controller "follower_controller"
   version "2"
-  emitter_channel 115
-  receiver_channel 115
+  emitter_channel 106
+  receiver_channel 106
   turretSlot [
     GPS {
     }
@@ -357,7 +157,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 1.4 -0.04 0
+  translation 0.5 -0.04 -1.1533394254163996
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -366,12 +166,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 1.5 0 1.5489431079803233
-  name "e-puck-1-16"
+  translation 0.6 0 0
+  name "e-puck-1-7"
   controller "follower_controller"
   version "2"
-  emitter_channel 116
-  receiver_channel 116
+  emitter_channel 107
+  receiver_channel 107
   turretSlot [
     GPS {
     }
@@ -380,7 +180,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 1.5 -0.04 0
+  translation 0.6 -0.04 -1.3161989100852927
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -389,12 +189,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 1.6 0 1.4635607671243507
-  name "e-puck-1-17"
+  translation 0.7 0 0
+  name "e-puck-1-8"
   controller "follower_controller"
   version "2"
-  emitter_channel 117
-  receiver_channel 117
+  emitter_channel 108
+  receiver_channel 108
   turretSlot [
     GPS {
     }
@@ -403,7 +203,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 1.6 -0.04 0
+  translation 0.7 -0.04 -1.4450140439061934
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -412,191 +212,7 @@ SolidBox {
   }
 }
 E-puck {
-  translation 1.7 0 1.3541674084832178
-  name "e-puck-1-18"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 118
-  receiver_channel 118
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 1.7 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 1.8 0 1.222557727527665
-  name "e-puck-1-19"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 119
-  receiver_channel 119
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 1.8 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 1.9 0 1.070890898281146
-  name "e-puck-1-20"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 120
-  receiver_channel 120
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 1.9 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 2.0 0 0.9016551501470856
-  name "e-puck-1-21"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 121
-  receiver_channel 121
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 2.0 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 2.1 0 0.7176269462895776
-  name "e-puck-1-22"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 122
-  receiver_channel 122
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 2.1 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 2.2 0 0.5218254332825454
-  name "e-puck-1-23"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 123
-  receiver_channel 123
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 2.2 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 2.3 0 0.3174629093214449
-  name "e-puck-1-24"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 124
-  receiver_channel 124
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 2.3 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 2.4 0 0.10789212361059615
-  name "e-puck-1-25"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 125
-  receiver_channel 125
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 2.4 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 2.5 0 -0.10344872847336455
+  translation 0.8 0 0
   name "e-puck-2-1"
   controller "follower_controller"
   version "2"
@@ -610,7 +226,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 2.5 -0.04 0
+  translation 0.8 -0.04 -1.5364529386844472
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -619,7 +235,7 @@ SolidBox {
   }
 }
 E-puck {
-  translation 2.6 0 -0.31309241203858473
+  translation 0.9 0 0
   name "e-puck-2-2"
   controller "follower_controller"
   version "2"
@@ -633,7 +249,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 2.6 -0.04 0
+  translation 0.9 -0.04 -1.5881504672412288
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -642,7 +258,7 @@ SolidBox {
   }
 }
 E-puck {
-  translation 2.7 0 -0.517599535754208
+  translation 1.0 0 0
   name "e-puck-2-3"
   controller "follower_controller"
   version "2"
@@ -656,7 +272,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 2.7 -0.04 0
+  translation 1.0 -0.04 -1.598769438984238
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -665,214 +281,7 @@ SolidBox {
   }
 }
 E-puck {
-  translation 2.8 0 -0.7136149781281647
-  name "e-puck-2-4"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 204
-  receiver_channel 204
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 2.8 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 2.9 0 -0.8979229312632161
-  name "e-puck-2-5"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 205
-  receiver_channel 205
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 2.9 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 3.0 0 -1.0674996590494046
-  name "e-puck-2-6"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 206
-  receiver_channel 206
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 3.0 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 3.1 0 -1.2195631042477775
-  name "e-puck-2-7"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 207
-  receiver_channel 207
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 3.1 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 3.2 0 -1.3516185306170077
-  name "e-puck-2-8"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 208
-  receiver_channel 208
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 3.2 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 3.3 0 -1.461499451283161
-  name "e-puck-2-9"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 209
-  receiver_channel 209
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 3.3 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 3.4 0 -1.5474031718862717
-  name "e-puck-2-10"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 210
-  receiver_channel 210
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 3.4 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 3.5 0 -1.6079203653867336
-  name "e-puck-2-11"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 211
-  receiver_channel 211
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 3.5 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 3.6 0 -1.642058193330492
-  name "e-puck-2-12"
-  controller "follower_controller"
-  version "2"
-  emitter_channel 212
-  receiver_channel 212
-  turretSlot [
-    GPS {
-    }
-    Compass {
-    }
-  ]
-}
-SolidBox {
-  translation 3.6 -0.04 0
-  size 0.08 0.08 0.08
-  appearance PBRAppearance {
-    baseColor 0.517449 0.807218 0.999069
-    roughness 0.5
-    metalness 0
-  }
-}
-E-puck {
-  translation 3.7 0 -1.6492565942480706
+  translation 1.1 0 0
   name "e-puck-2"
   controller "leader_controller"
   version "2"
@@ -886,7 +295,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 3.7 -0.04 0
+  translation 1.1 -0.04 -1.5680351872222218
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -895,12 +304,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 3.8 0 -1.6293974719617499
-  name "e-puck-2-14"
+  translation 1.2 0 0
+  name "e-puck-2-5"
   controller "follower_controller"
   version "2"
-  emitter_channel 214
-  receiver_channel 214
+  emitter_channel 205
+  receiver_channel 205
   turretSlot [
     GPS {
     }
@@ -909,7 +318,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 3.8 -0.04 0
+  translation 1.2 -0.04 -1.49674267359967
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -918,12 +327,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 3.9 0 -1.5828066330585369
-  name "e-puck-2-15"
+  translation 1.3 0 0
+  name "e-puck-2-6"
   controller "follower_controller"
   version "2"
-  emitter_channel 215
-  receiver_channel 215
+  emitter_channel 206
+  receiver_channel 206
   turretSlot [
     GPS {
     }
@@ -932,7 +341,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 3.9 -0.04 0
+  translation 1.3 -0.04 -1.3867359258908074
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -941,12 +350,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.0 0 -1.510248441742953
-  name "e-puck-2-16"
+  translation 1.4 0 0
+  name "e-puck-2-7"
   controller "follower_controller"
   version "2"
-  emitter_channel 216
-  receiver_channel 216
+  emitter_channel 207
+  receiver_channel 207
   turretSlot [
     GPS {
     }
@@ -955,7 +364,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.0 -0.04 0
+  translation 1.4 -0.04 -1.240860341007871
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -964,12 +373,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.1 0 -1.4129132797615382
-  name "e-puck-2-17"
+  translation 1.5 0 0
+  name "e-puck-2-8"
   controller "follower_controller"
   version "2"
-  emitter_channel 217
-  receiver_channel 217
+  emitter_channel 208
+  receiver_channel 208
   turretSlot [
     GPS {
     }
@@ -978,7 +387,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.1 -0.04 0
+  translation 1.5 -0.04 -1.0628890869377485
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -987,12 +396,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.2 0 -1.2923980171301848
-  name "e-puck-2-18"
+  translation 1.6 0 0
+  name "e-puck-3-1"
   controller "follower_controller"
   version "2"
-  emitter_channel 218
-  receiver_channel 218
+  emitter_channel 301
+  receiver_channel 301
   turretSlot [
     GPS {
     }
@@ -1001,7 +410,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.2 -0.04 0
+  translation 1.6 -0.04 -0.8574255072693119
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -1010,12 +419,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.3 0 -1.150679814059405
-  name "e-puck-2-19"
+  translation 1.7 0 0
+  name "e-puck-3-2"
   controller "follower_controller"
   version "2"
-  emitter_channel 219
-  receiver_channel 219
+  emitter_channel 302
+  receiver_channel 302
   turretSlot [
     GPS {
     }
@@ -1024,7 +433,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.3 -0.04 0
+  translation 1.7 -0.04 -0.6297840526825601
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -1033,12 +442,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.4 0 -0.9900836838802813
-  name "e-puck-2-20"
+  translation 1.8 0 0
+  name "e-puck-3-3"
   controller "follower_controller"
   version "2"
-  emitter_channel 220
-  receiver_channel 220
+  emitter_channel 303
+  receiver_channel 303
   turretSlot [
     GPS {
     }
@@ -1047,7 +456,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.4 -0.04 0
+  translation 1.8 -0.04 -0.3858528191849554
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -1056,12 +465,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.5 0 -0.8132443491301875
-  name "e-puck-2-21"
-  controller "follower_controller"
+  translation 1.9 0 0
+  name "e-puck-3"
+  controller "leader_controller"
   version "2"
-  emitter_channel 221
-  receiver_channel 221
+  emitter_channel 3
+  receiver_channel 3
   turretSlot [
     GPS {
     }
@@ -1070,7 +479,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.5 -0.04 0
+  translation 1.9 -0.04 -0.13194124863391152
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -1079,12 +488,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.6 0 -0.6230630165831639
-  name "e-puck-2-22"
+  translation 2.0 0 0
+  name "e-puck-3-5"
   controller "follower_controller"
   version "2"
-  emitter_channel 222
-  receiver_channel 222
+  emitter_channel 305
+  receiver_channel 305
   turretSlot [
     GPS {
     }
@@ -1093,7 +502,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.6 -0.04 0
+  translation 2.0 -0.04 0.1253830691283598
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -1102,12 +511,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.7 0 -0.42265978036906626
-  name "e-puck-2-23"
+  translation 2.1 0 0
+  name "e-puck-3-6"
   controller "follower_controller"
   version "2"
-  emitter_channel 223
-  receiver_channel 223
+  emitter_channel 306
+  receiver_channel 306
   turretSlot [
     GPS {
     }
@@ -1116,7 +525,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.7 -0.04 0
+  translation 2.1 -0.04 0.37946427130749605
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -1125,12 +534,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.8 0 -0.21532243405070994
-  name "e-puck-2-24"
+  translation 2.2 0 0
+  name "e-puck-3-7"
   controller "follower_controller"
   version "2"
-  emitter_channel 224
-  receiver_channel 224
+  emitter_channel 307
+  receiver_channel 307
   turretSlot [
     GPS {
     }
@@ -1139,7 +548,7 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.8 -0.04 0
+  translation 2.2 -0.04 0.6237303804276104
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069
@@ -1148,12 +557,12 @@ SolidBox {
   }
 }
 E-puck {
-  translation 4.9 0 -0.004452531442467461
-  name "e-puck-2-25-rb"
+  translation 2.3 0 0
+  name "e-puck-3-8"
   controller "follower_controller"
   version "2"
-  emitter_channel 225
-  receiver_channel 225
+  emitter_channel 308
+  receiver_channel 308
   turretSlot [
     GPS {
     }
@@ -1162,7 +571,375 @@ E-puck {
   ]
 }
 SolidBox {
-  translation 4.9 -0.04 0
+  translation 2.3 -0.04 0.8518632928529677
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 2.4 0 0
+  name "e-puck-4-1"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 401
+  receiver_channel 401
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 2.4 -0.04 1.0579622006957412
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 2.5 0 0
+  name "e-puck-4-2"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 402
+  receiver_channel 402
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 2.5 -0.04 1.2366962200946652
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 2.6 0 0
+  name "e-puck-4-3"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 403
+  receiver_channel 403
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 2.6 -0.04 1.3834422780337503
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 2.7 0 0
+  name "e-puck-4"
+  controller "leader_controller"
+  version "2"
+  emitter_channel 4
+  receiver_channel 4
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 2.7 -0.04 1.4944046911677558
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 2.8 0 0
+  name "e-puck-4-5"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 405
+  receiver_channel 405
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 2.8 -0.04 1.5667133436694067
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 2.9 0 0
+  name "e-puck-4-6"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 406
+  receiver_channel 406
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 2.9 -0.04 1.598497924663769
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.0 0 0
+  name "e-puck-4-7"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 407
+  receiver_channel 407
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.0 -0.04 1.588936305049657
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.1 0 0
+  name "e-puck-4-8"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 408
+  receiver_channel 408
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.1 -0.04 1.5382758024097882
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.2 0 0
+  name "e-puck-5-1"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 501
+  receiver_channel 501
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.2 -0.04 1.4478267839787748
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.3 0 0
+  name "e-puck-5-2"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 502
+  receiver_channel 502
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.3 -0.04 1.3199287731323976
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.4 0 0
+  name "e-puck-5-3"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 503
+  receiver_channel 503
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.4 -0.04 1.157889936076122
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.5 0 0
+  name "e-puck-5"
+  controller "leader_controller"
+  version "2"
+  emitter_channel 5
+  receiver_channel 5
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.5 -0.04 0.9659015139494713
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.6 0 0
+  name "e-puck-5-5"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 505
+  receiver_channel 505
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.6 -0.04 0.7489294136161786
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.7 0 0
+  name "e-puck-5-6"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 506
+  receiver_channel 506
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.7 -0.04 0.5125857612156708
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.8 0 0
+  name "e-puck-5-7"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 507
+  receiver_channel 507
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.8 -0.04 0.262983740827771
+  size 0.08 0.08 0.08
+  appearance PBRAppearance {
+    baseColor 0.517449 0.807218 0.999069
+    roughness 0.5
+    metalness 0
+  }
+}
+E-puck {
+  translation 3.9 0 0
+  name "e-puck-5-8-rb"
+  controller "follower_controller"
+  version "2"
+  emitter_channel 508
+  receiver_channel 508
+  turretSlot [
+    GPS {
+    }
+    Compass {
+    }
+  ]
+}
+SolidBox {
+  translation 3.9 -0.04 0.0065794729441060315
   size 0.08 0.08 0.08
   appearance PBRAppearance {
     baseColor 0.517449 0.807218 0.999069

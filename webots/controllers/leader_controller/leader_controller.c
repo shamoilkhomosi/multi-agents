@@ -75,14 +75,14 @@ int main(int argc, char *argv[]) {
   wb_robot_init();
 
   if (strcmp(wb_robot_get_model(), "GCtronic e-puck2") == 0) {
-    printf("e-puck2 robot\n");
+    // printf("e-puck2 robot\n");
     #if defined(EST_ALL)
     time_step = 64;
     #else
     time_step = 64;
     #endif
   } else {  // original e-puck
-    printf("e-puck robot\n");
+    // printf("e-puck robot\n");
     time_step = 256;
     camera_time_step = 1024;
   }
@@ -201,7 +201,7 @@ int main(int argc, char *argv[]) {
  
     speed_l[0] = + LOCAL_GAIN * l_speed[1] + GLOBAL_GAIN * spd_left; // angular velocity from wheel radius
     speed_r[0] = + LOCAL_GAIN * l_speed[1] + GLOBAL_GAIN * spd_right; // angular velocity from wheel radius
-    printf("leader %i: %lf %lf %lf\n", id, target_dist, speed_l[0], speed_r[0]);
+    // printf("leader %i: %lf %lf %lf\n", id, target_dist, speed_l[0], speed_r[0]);
     
     speed_l[0] = 0.33*speed_l[0] + 0.33*speed_l[1] + 0.33*speed_l[2];
     speed_r[0] = 0.33*speed_r[0] + 0.33*speed_r[1] + 0.33*speed_r[2];
@@ -213,7 +213,7 @@ int main(int argc, char *argv[]) {
     #else
     
     speed[0] = + LOCAL_GAIN * l_speed[1] + GLOBAL_GAIN * g_speed[1]; // angular velocity from wheel radius
-    printf("leader %i: %lf %lf\n", id, target_dist, speed[0]);
+    printf("leader %i: %lf %lf %lf %lf\n", id, target_dist, speed[0], l_speed[1], g_speed[1]);
     
     speed[0] = 0.33*speed[0] + 0.33*speed[1] + 0.33*speed[2];
     wb_motor_set_velocity(left_motor, MIN(MAX_VELOCITY, speed[0]));
@@ -267,12 +267,12 @@ static void send_z_linear(WbDeviceTag emitter, WbDeviceTag receiver, double z, i
     const double *z_rcvd = wb_receiver_get_data(receiver);
       if (round(*z_rcvd*100) != 0){  // prevent noisy/faulty measurements from being used
         z_lead_r = *z_rcvd; 
-        printf("INNNN\n");
+        // printf("INNNN\n");
         }
     wb_receiver_next_packet(receiver);
   } 
   
-  // printf("LEADER id: %d z-1: %lf z: %lf z+1: %lf\n", original_channel, z_lead_l, z_lead, z_lead_r);
+  // // printf("LEADER id: %d z-1: %lf z: %lf z+1: %lf\n", original_channel, z_lead_l, z_lead, z_lead_r);
   
   /* send commands to followers */
   double x_lead = floor(CLUSTER_SIZE/2);
@@ -284,7 +284,7 @@ static void send_z_linear(WbDeviceTag emitter, WbDeviceTag receiver, double z, i
     // j = i+1;
     // z_out = z_foh[i];
     // new_channel = original_channel*100+j;
-    // printf("LEADER%i ind: %d val: %lf val_l: %lf out: %lf\n", original_channel, i, z_lead, z_lead_l, z_out);
+    // // printf("LEADER%i ind: %d val: %lf val_l: %lf out: %lf\n", original_channel, i, z_lead, z_lead_l, z_out);
     // wb_emitter_set_channel(emitter, new_channel);
     // wb_emitter_send(emitter, &z_out, sizeof(double));
   // }
@@ -293,8 +293,8 @@ static void send_z_linear(WbDeviceTag emitter, WbDeviceTag receiver, double z, i
     // j = i+1;
     // z_out = z_foh[i];
     // new_channel = original_channel*100+j;
-    // printf("LEADER stat: %d ind: %d val: %lf\n", new_channel, i, z_out);
-    // printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
+    // // printf("LEADER stat: %d ind: %d val: %lf\n", new_channel, i, z_out);
+    // // printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
     // wb_emitter_set_channel(emitter, new_channel);
     // wb_emitter_send(emitter, &z_out, sizeof(double));
   // }
@@ -310,9 +310,10 @@ static void send_z_linear(WbDeviceTag emitter, WbDeviceTag receiver, double z, i
     j = i+1;
     z_out = z_foh[i];
     new_channel = original_channel*100+j;
-    printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
+    // printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
     wb_emitter_set_channel(emitter, new_channel);
     wb_emitter_send(emitter, &z_out, sizeof(double));
+    
   }
   
   wb_emitter_set_channel(emitter, original_channel);
@@ -330,13 +331,15 @@ static void send_z_quad(WbDeviceTag emitter, WbDeviceTag receiver, double z, int
   
   // send position to neighbouring leaders
   double z_send = original_channel*100 + z_lead;
+  new_channel = original_channel+1;
+  wb_emitter_set_channel(emitter, new_channel);
+  wb_emitter_send(emitter, &z_send, sizeof(double));
+  
   new_channel = original_channel-1;
   wb_emitter_set_channel(emitter, new_channel);
   wb_emitter_send(emitter, &z_send, sizeof(double));
 
-  new_channel = original_channel+1;
-  wb_emitter_set_channel(emitter, new_channel);
-  wb_emitter_send(emitter, &z_send, sizeof(double));
+  
   
   // receive position of neighbouring leaders
   // && (rcv_ok!=1)
@@ -344,22 +347,22 @@ static void send_z_quad(WbDeviceTag emitter, WbDeviceTag receiver, double z, int
     const double *z_rcvd = wb_receiver_get_data(receiver);
     rcv_channel = floor(*z_rcvd/100);
     rcv_z = *z_rcvd - rcv_channel*100;
-    if ((int)rcv_channel == original_channel+1) {
-      if (round(rcv_z*100) != 0){ // prevent noisy/faulty measurements from being used
+    if ((int)rcv_channel == (original_channel+1)) {
+      if (round(rcv_z*1000) != 0){ // prevent noisy/faulty measurements from being used
         z_lead_r = rcv_z; 
-        rcv_ok = 1; printf("INNNN RIGHT\n");
+        rcv_ok = 1; // printf("INNNN RIGHT\n");
         } else {rcv_ok = 0;}
     }
-    if ((int)rcv_channel == original_channel-1) {
-      if (round(rcv_z*100) != 0){ // prevent noisy/faulty measurements from being used
+    if ((int)rcv_channel == (original_channel-1)) {
+      if (round(rcv_z*1000) != 0){ // prevent noisy/faulty measurements from being used
         z_lead_l = rcv_z; 
-        rcv_ok = 1; printf("INNNN LEFT\n");
+        rcv_ok = 1; // printf("INNNN LEFT\n");
         } else {rcv_ok = 0;}
     }
     wb_receiver_next_packet(receiver);
   } 
   
-  // printf("LEADER id: %d z-1: %lf z: %lf z+1: %lf\n", original_channel, z_lead_l, z_lead, z_lead_r);
+  // // printf("LEADER id: %d z-1: %lf z: %lf z+1: %lf\n", original_channel, z_lead_l, z_lead, z_lead_r);
   
   /* send commands to followers */
   double z_soh[(int)CLUSTER_SIZE] = {};
@@ -379,7 +382,7 @@ static void send_z_quad(WbDeviceTag emitter, WbDeviceTag receiver, double z, int
     // j = i+1;
     // z_out = z_soh[i];
     // new_channel = original_channel*100+j;
-    // printf("LEADER%i ind: %d val: %lf val_l: %lf out: %lf\n", original_channel, i, z_lead, z_lead_l, z_out);
+    // // printf("LEADER%i ind: %d val: %lf val_l: %lf out: %lf\n", original_channel, i, z_lead, z_lead_l, z_out);
     // wb_emitter_set_channel(emitter, new_channel);
     // wb_emitter_send(emitter, &z_out, sizeof(double));
   // }
@@ -392,7 +395,7 @@ static void send_z_quad(WbDeviceTag emitter, WbDeviceTag receiver, double z, int
     // j = i+1;
     // z_out = z_soh[i];
     // new_channel = original_channel*100+j;
-    // printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
+    // // printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
     // wb_emitter_set_channel(emitter, new_channel);
     // wb_emitter_send(emitter, &z_out, sizeof(double));
   // }
@@ -410,32 +413,47 @@ static void send_z_quad(WbDeviceTag emitter, WbDeviceTag receiver, double z, int
     // j = i+1;
     // z_out = z_soh[i];
     // new_channel = original_channel*100+j;
-    // printf("LEADER stat: %d ind: %d val: %lf\n", new_channel, i, z_out);
-    // printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
+    // // printf("LEADER stat: %d ind: %d val: %lf\n", new_channel, i, z_out);
+    // // printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
     // wb_emitter_set_channel(emitter, new_channel);
     // wb_emitter_send(emitter, &z_out, sizeof(double));
   // }
   
-  if (z_lead != z_lead_l){
+  
   for (int i = 0; i < ceil(CLUSTER_SIZE/2)-1; i++){
-    z_soh[i] = z_lead_l + (z_lead - z_lead_l)/(CLUSTER_SIZE)*(i+ceil(CLUSTER_SIZE/2));
+    if (z_lead != z_lead_l){
+      z_soh[i] = z_lead_l + (z_lead - z_lead_l)/(CLUSTER_SIZE)*(i+ceil(CLUSTER_SIZE/2));
+      z_out = z_soh[i];
+    } else{
+    z_soh[i] = z_lead;
+      z_out = z_soh[i];
+      // z_out = z_lead;
+    }
     j = i+1;
-    z_out = z_soh[i];
     new_channel = original_channel*100+j;
-    printf("LEADER%i ind: %d val: %lf val_l: %lf out: %lf\n", original_channel, i, z_lead, z_lead_l, z_out);
+    // printf("LEADER%i ind: %d val: %lf val_l: %lf out: %lf\n", original_channel, i, z_lead, z_lead_l, z_out);
     wb_emitter_set_channel(emitter, new_channel);
     wb_emitter_send(emitter, &z_out, sizeof(double));
-  }}
-  if (z_lead != z_lead_r){
+  }
   for (int i = ceil(CLUSTER_SIZE/2); i < CLUSTER_SIZE; i++){
+    if (z_lead != z_lead_r){
+      z_soh[i] = z_lead + (z_lead_r - z_lead)/(CLUSTER_SIZE)*(i-floor(CLUSTER_SIZE/2));
+      z_out = z_soh[i];
+    } else if (original_channel == 3){
     z_soh[i] = z_lead + (z_lead_r - z_lead)/(CLUSTER_SIZE)*(i-floor(CLUSTER_SIZE/2));
+      z_out = z_soh[i];
+      printf("LE ME\n");
+    } else{
+    z_soh[i] = z_lead;
+      z_out = z_soh[i];
+      // z_out = z_lead;
+    }
     j = i+1;
-    z_out = z_soh[i];
     new_channel = original_channel*100+j;
-    printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
+    // printf("LEADER%i ind: %d val: %lf val_r: %lf out: %lf\n", original_channel, i, z_lead, z_lead_r, z_out);
     wb_emitter_set_channel(emitter, new_channel);
     wb_emitter_send(emitter, &z_out, sizeof(double));
-  }}
+  }
   
   
   wb_emitter_set_channel(emitter, original_channel);
@@ -443,7 +461,7 @@ static void send_z_quad(WbDeviceTag emitter, WbDeviceTag receiver, double z, int
 
 static void send_z_all(WbDeviceTag emitter, char *message, double z, int id){
   // double range = ((rand())%100 < 50) ? 0.6 : 0.6;
-  // printf( "rand range: %lf \n", range); 
+  // // printf( "rand range: %lf \n", range); 
   // wb_emitter_set_range(emitter, range);
   
   // if (global_send_index == id){
@@ -458,14 +476,14 @@ static void send_z_all(WbDeviceTag emitter, char *message, double z, int id){
 
 static void send_z_2d_all(WbDeviceTag emitter, char *message, double z, double b, int id){
   // double range = ((rand())%100 < 50) ? 0.6 : 0.6;
-  // printf( "rand range: %lf \n", range); 
+  // // printf( "rand range: %lf \n", range); 
   // wb_emitter_set_range(emitter, range);
   
   // if (global_send_index == id){
   // char message_1[64] = {};
   // char message_2[64] = {};
-  // sprintf(message_1, "%lf", z);
-  // sprintf(message_2, "%lf", b);
+  // s// printf(message_1, "%lf", z);
+  // s// printf(message_2, "%lf", b);
   // message = strcat(message_1, message_2);
   // wb_emitter_set_channel(emitter, 1);
   // wb_emitter_send(emitter, message, sizeof(message));

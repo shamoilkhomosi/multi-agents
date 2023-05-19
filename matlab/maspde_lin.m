@@ -49,22 +49,20 @@ for i=1:Na
 %     dzdt(x_lead)     = k*(0-z_lead);
 
     for j = i_global
-        if j == 400
-            hellooo = 1;
-        end
         if j == 1
-            dzdt(j) = v*(z(j+1) - z(j))/h  + a*z(j) - k*(z_foh(j)) + kr*r(j);
+            dzdt(j) = v*(z(j+1) - z(j))/h  + a*z(j) - k*(z_foh(j)) + kr*r(j)- v*(r(j+1) - r(j))/h;
         elseif j == Nh
-            dzdt(j) = v*(-z(j-1) + z(j))/h + a*z(j) - k*(z(j)) + kr*r(j) ;
+            dzdt(j) = v*(-z(j-1) + z(j))/h + a*z(j) - k*(z(j)) + kr*r(j)  - v*(-r(j-1) + r(j))/h;
         elseif j == x_lead
-            dzdt(j) = v*(z(j+1) - 2*z(j) + z(j-1))/h^2 + a*z_lead - k*(z_lead) + kr*r(j);
+            dzdt(j) = v*(z(j+1) - 2*z(j) + z(j-1))/h^2 + a*z_lead - k*(z_lead) + kr*r(j)  - v*(r(j+1) - 2*r(j) + r(j-1))/h^2;
         else
-            dzdt(j) = v*(z(j+1) - 2*z(j) + z(j-1))/h^2 + a*z(j) - k*(z_foh(j)) + kr*r(j);
+            dzdt(j) = v*(z(j+1) - 2*z(j) + z(j-1))/h^2 + a*z(j) - k*(z_foh(j)) + kr*r(j)  - v*(r(j+1) - 2*r(j) + r(j-1))/h^2;
         end
     end
 end
 
 end
+%  - r(j+1) + 2*r(j) - r(j-1)
 
 
 

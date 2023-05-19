@@ -71,14 +71,14 @@ int main(int argc, char *argv[]) {
   // wb_robot_init();
 
   if (strcmp(wb_robot_get_model(), "GCtronic e-puck2") == 0) {
-    printf("e-puck2 robot\n");
+    //- printf("e-puck2 robot\n");
     #if defined(EST_ALL)
     time_step = 64;
     #else
     time_step = 64;
     #endif
   } else {  // original e-puck
-    printf("e-puck robot\n");
+    //- printf("e-puck robot\n");
     time_step = 256;
     camera_time_step = 1024;
   }
@@ -192,14 +192,14 @@ int main(int argc, char *argv[]) {
     
     double rbt_v = target_dist;
     if (collision) target_bearing = -(collision_angle + PI); // for collision avoidance - rotate opposite obstacle
-    if (collision) printf("COLLISION!!!!!!!!\n");
+    //if (collision) //- printf("COLLISION!!!!!!!!\n");
     double rbt_w = -target_bearing;
     double spd_right = rbt_v - rbt_w;
     double spd_left = rbt_v + rbt_w;
      
     speed_l[0] = + LOCAL_GAIN * l_speed[1] + GLOBAL_GAIN * spd_left; // angular velocity from wheel radius
     speed_r[0] = + LOCAL_GAIN * l_speed[1] + GLOBAL_GAIN * spd_right; // angular velocity from wheel radius
-    printf("%i: %lf %lf %lf\n", id, target_dist, speed_l[0], speed_r[0]);
+    //- printf("%i: %lf %lf %lf\n", id, target_dist, speed_l[0], speed_r[0]);
     
     speed_l[0] = 0.33*speed_l[0] + 0.33*speed_l[1] + 0.33*speed_l[2];
     speed_r[0] = 0.33*speed_r[0] + 0.33*speed_r[1] + 0.33*speed_r[2];
@@ -209,10 +209,10 @@ int main(int argc, char *argv[]) {
     speed_r[2] = speed_r[1]; speed_r[1] = speed_r[0];
     
     #else
-    // printf("%c: %lf\n", sid, g_speed[1]);
+    // //- printf("%c: %lf\n", sid, g_speed[1]);
    
     speed[0] = + LOCAL_GAIN * l_speed[1] + GLOBAL_GAIN * g_speed[1];
-    // printf("%i: %lf (%lf, %lf), %lf\n", id, l_speed[1], disp_left, disp_right, g_speed[1]);
+    // //- printf("%i: %lf (%lf, %lf), %lf\n", id, l_speed[1], disp_left, disp_right, g_speed[1]);
     
     /* set speed values */
     speed[0] = 0.33*speed[0] + 0.33*speed[1] + 0.33*speed[2];
@@ -228,7 +228,7 @@ int main(int argc, char *argv[]) {
     #endif
     
     write_to_csv((leader-1)*(int)CLUSTER_SIZE + id - 1, get_z_ideal(tof_sensor, leader, id, gps, compass));
-    
+
   }
 
   wb_robot_cleanup();
@@ -253,7 +253,7 @@ static double get_z_constant(WbDeviceTag receiver, double *z, int id){
     temp = *message;
     if (round(*message*100) != 0){ // prevent noisy/faulty measurements from being used
       *z = temp; 
-      // printf("%i: %lf\n", id, temp);
+      // //- printf("%i: %lf\n", id, temp);
     }
     
     wb_receiver_next_packet(receiver);
@@ -271,7 +271,7 @@ static double get_z_linear(WbDeviceTag receiver, double *z, int id){
     
     if (round(*message*100) != 0){ // prevent noisy/faulty measurements from being used
       *z = *message; 
-      // printf("FOLLOWER stat: %d id: %d rcvd: %lf\n", wb_receiver_get_channel(receiver), id, *message);
+      printf("FOLLOWER stat: %d id: %d rcvd: %lf\n", wb_receiver_get_channel(receiver), id, *message);
     }
     
     wb_receiver_next_packet(receiver); 
@@ -305,7 +305,7 @@ static double get_z_all(WbDeviceTag receiver, double *z, int id){
       gain = signal/max_strength; // multiplied by 0.9 to avoid a gain = 1
       // bound by an upper value based on minimum distance possible -> constant Amax = 1/(r_min)... no need for gain
       *z = gain*temp + (1-gain)*(*z); 
-      printf("%i: %lf (%lf) %lf ... %i\n", id, temp, signal, *z, queue);
+      //- printf("%i: %lf (%lf) %lf ... %i\n", id, temp, signal, *z, queue);
     }
     
     wb_receiver_next_packet(receiver);
@@ -333,7 +333,7 @@ static double get_z_2d_all(WbDeviceTag receiver, double *z, double *b, int id, W
     // if (round(temp*1000) != 0){ // prevent noisy/faulty measurements from being used
       // gain = signal/max_strength; // multiplied by 0.9 to avoid a gain = 1
       // *z = gain*temp + (1-gain)*(*z); 
-      // printf("%i: %lf (%lf) %lf ... %i\n", id, temp, signal, *z, queue);
+      // //- printf("%i: %lf (%lf) %lf ... %i\n", id, temp, signal, *z, queue);
     // }
     
     // wb_receiver_next_packet(receiver);

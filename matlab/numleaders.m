@@ -1,3 +1,7 @@
+% This script is used to generate the settling times when different number
+% of leaders are present in the MAS. The iterations for the number of the
+% leaders is defined in 'Nas' variable.
+
 clc; clear; close;
 
 tend = 3; % time scale
@@ -14,8 +18,6 @@ mu   = 10; % global controller
 a    = 4; % system dynamics   mode = pi^2 pi^2/xend^2
 v    = 0.016; % local controller  *xend^2 correct term for bigger space? how is this optimised? can we not set it really high/low to achieve faster response?
 kr   = 0; % feedforward gain (try also integral action) (= mu-a to avoid needing integral action for zero-offset tracking)
-% ki   = 0.002;
-ki = 0;
 
 % r    = 3*cos(x/xend*2*pi) ; %target curve
 r = x.*0;
@@ -23,26 +25,18 @@ r = x.*0;
 phiL = 0; % steady state position of left boundary agent (leader?)
 phiR = 0; % steady state position of right boundary agent (leader?)
 
-r_num_stab = v^2*k/h^2; % stability parameter - check always
+r_num_stab = v^2*k/h^2; % stability parameter 
 
 % define initial conditions and solve ODEs at each point in space
 % z0 = 10.*x.*(xend-x);
 % z0 = 10.*x.^2.*(xend-x);
-
 % z0 = x.*(xend-x);
 % z0 = 100.*x.^3.*(xend-x);
 % z0 = x.*0;
-% for n = 1:100
-%     z0 = z0+ 4/pi.*(1/n*sin(n*pi*x/xend));
-% end
 % z0 = ones(length(x), 1);
 % z0 = cos(x/xend*2*pi);
-z0 = 10*sin(x/xend*2*pi); % try halfcycle
+z0 = 10*sin(x/xend*2*pi);
 % z0 = sqrt(1-(x-1).^2) + 1;
-% [t, z] = ode15s(@maspde1, tspan, z0, [], phiL, phiR, h, Nh, mu, a);
-% % re-add (time-varying) boundary conditions
-% z(:,1) = phiL*(1-exp(temp_tc*t));
-% z(:,Nh+1) = phiR*(1-exp(temp_tc*t));
 
 for Na = Nas
     %
@@ -73,15 +67,7 @@ for Na = Nas
     z(:,Nh+1) = phiR;
     e_norm_z_foh = sqrt(sum((z-repmat([r 0],Nk+1,1)).^2,2));
     z_foh = z;
-    
-%     [t, z] = ode15s(@maspde4, tspan, z0, [], x, phiL, phiR, Na, h, Nh, mu, a);
-%     % re-add (time-varying) boundary conditions
-%     z(:,1) = phiL*(1-exp(temp_tc*t));
-%     z(:,Nh+1) = phiR*(1-exp(temp_tc*t));
-%     e_norm_z_soh = sqrt(sum((z-repmat([r 0],Nk+1,1)).^2,2));
-%     figure; sel=50; surf(z(1:round(tend/k/sel):end, 1:round(xend/h/sel):end), 'edgecolor', 'none')
-%     % figure; plot(z(5, 1:end), 'c', 'LineWidth', 2)
-    
+
     [t, z] = ode15s(@maspde5, tspan, z0, [], x, phiL, phiR, Na, h, Nh, mu, a, v, kr, r);
     % re-add (time-varying) boundary conditions
     z(:,1) = phiL;
@@ -112,9 +98,13 @@ for Na = Nas
     settle_time_soh3(find(Nas==Na)) = find(e_norm_z_soh3 <settle_thres, 1);
     settle_time_rssi(find(Nas==Na)) = find(e_norm_z_rssi <settle_thres, 1);
 end
-    save("num_leaders_4.mat", "settle_time_ideal", "settle_time_zoh", "settle_time_foh","settle_time_soh2", "settle_time_soh3", "settle_time_rssi")
+
+save("num_leaders_4.mat", "settle_time_ideal", "settle_time_zoh", "settle_time_foh","settle_time_soh2", "settle_time_soh3", "settle_time_rssi")
 %%
-Nh   = 1000; % number of steps in space§
+
+% Plot the results
+
+Nh   = 1000; % number of steps in space
 Nas = [Nh/5 Nh/8 Nh/10 Nh/20 Nh/25 Nh/40 Nh/50 Nh/100 Nh/125 Nh/200];
 
 load("num_leaders.mat")
@@ -133,4 +123,3 @@ semilogy(Nas, settle_time_foh.*2.0,'Marker','square','LineWidth',width, 'Display
 semilogy(Nas, settle_time_soh2.*2.0,'Marker','square','LineWidth',width, 'DisplayName','Quadratic');
 semilogy(Nas, settle_time_soh3.*2.0,'Marker','square','LineWidth',width, 'DisplayName','Cubic');
 semilogy(Nas, settle_time_rssi.*2.0,'Marker','square','LineWidth',width, 'DisplayName','RSSI');
-% txt = {'Total number of agents = 1000'};text(20,300,txt)

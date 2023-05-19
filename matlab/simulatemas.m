@@ -1,6 +1,7 @@
-clc; 
-clear;
-close all;
+% This is the central script to simulate the MAS. The parameters defined
+% below can be used to change the MAS configuration and inital conditions.
+
+clc; clear; close all;
 
 tend = 1.5; % time scale
 xend = 1; % distance between left and right agent
